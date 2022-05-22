@@ -1,0 +1,10 @@
+.detail:nth-child(2){
+    display: flex;
+}
+
+.empl{
+ width: 60%; 
+}
+.material{
+    width: 40%;
+}

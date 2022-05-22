@@ -4,11 +4,13 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './auth.guard';
 import { ProjectComponent } from './components/project/project.component';
+import { ProjectDetailsComponent } from './components/project-details/project-details.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'departments', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'department/:id/projects', component: ProjectComponent, canActivate: [AuthGuard] },
+  { path: 'department/:id/project/:id/details', component: ProjectDetailsComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

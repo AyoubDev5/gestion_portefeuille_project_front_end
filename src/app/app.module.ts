@@ -17,6 +17,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
+//import material tools:\
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatRadioModule} from '@angular/material/radio';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -24,9 +31,18 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthGuard } from './auth.guard';
 import { ProjectComponent } from './components/project/project.component';
 import { DialogComponent } from './components/home/dialog/dialog.component';
-
+import { DialogprojectComponent } from './components/project/dialogproject/dialogproject.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSelectModule} from '@angular/material/select';
+import { DialogNewTeamComponent } from './components/project/dialogproject/dialog-new-team/dialog-new-team.component';
+import { ProjectDetailsComponent } from './components/project-details/project-details.component';
+import { DashboardComponent } from './components/project-details/dashboard/dashboard.component';
+import { TeamsEmpComponent } from './components/project-details/teams-emp/teams-emp.component';
+import { MaterialsComponent } from './components/project-details/materials/materials.component';
+import { DialogMaterialComponent } from './components/project-details/materials/dialog-material/dialog-material.component';
+import { DialogTeamEmpComponent } from './components/project-details/teams-emp/dialog-team-emp/dialog-team-emp.component';
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, LoginComponent, HomeComponent, ProjectComponent, DialogComponent],
+  declarations: [AppComponent, NavbarComponent, LoginComponent, HomeComponent, ProjectComponent, DialogComponent, DialogprojectComponent, DialogNewTeamComponent, ProjectDetailsComponent, DashboardComponent, TeamsEmpComponent, MaterialsComponent, DialogMaterialComponent, DialogTeamEmpComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -44,6 +60,14 @@ import { DialogComponent } from './components/home/dialog/dialog.component';
     FontAwesomeModule,
     MatIconModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    MatRadioModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
