@@ -7,6 +7,7 @@ import { IProjects } from '../components/project/IProjects';
 import { ITeams } from '../components/project/ITeams';
 import { IEmployees } from '../components/project-details/teams-emp/IEmployees';
 import { IMaterials } from '../components/project-details/materials/IMaterials';
+import { ITaches } from '../components/project-details/taches/ITaches';
 
 @Injectable({
   providedIn: 'root'
@@ -87,6 +88,17 @@ export class AuthService {
   }
   deleteMaterial(id:number){
     return this.http.delete<any>(`${baseURL}/api/material/${id}`)
+  }
+
+  //tache crud:
+  getTacheByIdEmp(idpro,idteam,idemp): Observable<ITaches[]>{
+    return this.http.get<ITaches[]>(`${baseURL}/api/projet/${idpro}/team/${idteam}/employ/${idemp}/tache`)
+  }
+  postTacheByEmplId(data):Observable<any>{
+    return this.http.post(`${baseURL}/api/taches`, data);
+  }
+  updateTacheById(data:any,id:number){
+    return this.http.put<any>(`${baseURL}/api/tache/${id}`, data);
   }
 
 

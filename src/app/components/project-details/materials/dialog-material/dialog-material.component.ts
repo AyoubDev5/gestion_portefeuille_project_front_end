@@ -14,6 +14,7 @@ export class DialogMaterialComponent implements OnInit {
 
   formMaterial: FormGroup;
   actionBtn : string = "Save";
+  public idp: any;
 
   constructor(    
     private formBuilder : FormBuilder, 
@@ -23,11 +24,12 @@ export class DialogMaterialComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.idp = localStorage.getItem('id_pro');
     this.formMaterial = this.formBuilder.group({
       name : ['', Validators.required],
       prix: ['', Validators.required],
       quantity: ['', Validators.required],
-      project: ['2', Validators.required],
+      project: [this.idp, Validators.required],
     });
     console.log("editData", this.editData);
     if(this.editData){

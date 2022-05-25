@@ -50,13 +50,6 @@ export class MaterialsComponent implements OnInit {
       }
     });
   }
-  // getMaterials(id: number){
-  //   this.service.getMaterialByProjId(id).subscribe(materials=>{
-  //     this.materials=materials;
-  //     console.log("materialist",this.materials);
-  //   });
-  // }
-
   openDialog(){
     this.dialog.open(DialogMaterialComponent, {
       width:"40%" ,
@@ -87,6 +80,10 @@ export class MaterialsComponent implements OnInit {
         console.log("err", err);
       }
     })
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

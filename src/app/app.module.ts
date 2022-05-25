@@ -41,8 +41,18 @@ import { TeamsEmpComponent } from './components/project-details/teams-emp/teams-
 import { MaterialsComponent } from './components/project-details/materials/materials.component';
 import { DialogMaterialComponent } from './components/project-details/materials/dialog-material/dialog-material.component';
 import { DialogTeamEmpComponent } from './components/project-details/teams-emp/dialog-team-emp/dialog-team-emp.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { LayoutModule } from '@angular/cdk/layout';
+import { AdminPanelComponent } from './components/project-details/admin-panel/admin-panel.component';
+import { CardsComponent } from './components/project-details/cards/cards.component';
+import { ChartsComponent } from './components/project-details/charts/charts.component';
+import { TachesComponent } from './components/project-details/taches/taches.component';
+import { DialogTacheComponent } from './components/project-details/taches/dialog-tache/dialog-tache.component';
+
+
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, LoginComponent, HomeComponent, ProjectComponent, DialogComponent, DialogprojectComponent, DialogNewTeamComponent, ProjectDetailsComponent, DashboardComponent, TeamsEmpComponent, MaterialsComponent, DialogMaterialComponent, DialogTeamEmpComponent],
+  declarations: [AppComponent, NavbarComponent, LoginComponent, HomeComponent, ProjectComponent, DialogComponent, DialogprojectComponent, DialogNewTeamComponent, ProjectDetailsComponent, DashboardComponent, TeamsEmpComponent, MaterialsComponent, DialogMaterialComponent, DialogTeamEmpComponent, AdminPanelComponent, CardsComponent, ChartsComponent, TachesComponent, DialogTacheComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -67,7 +77,10 @@ import { DialogTeamEmpComponent } from './components/project-details/teams-emp/d
     MatSortModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatGridListModule,
+    MatMenuModule,
+    LayoutModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

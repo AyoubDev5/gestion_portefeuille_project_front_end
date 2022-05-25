@@ -19,7 +19,7 @@ export class TeamsEmpComponent implements OnInit {
   public idteam: number;
   public teams:any[]=[];
 
-  displayedColumns: string[] = ['nom', 'prenom', 'specialite','actions'];
+  displayedColumns: string[] = ['nom', 'prenom', 'specialite','actions', 'tache'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -36,6 +36,8 @@ export class TeamsEmpComponent implements OnInit {
 
     this.route.params.subscribe((params) => {
       this.idprojet = params['id'];
+      let idp=String(this.idprojet);
+      localStorage.setItem("id_pro",idp);
       this.service.getTeamByProjetId(this.idprojet).subscribe(team=>{
         this.teams=team
         this.teams.find(tea=>{
@@ -98,7 +100,10 @@ export class TeamsEmpComponent implements OnInit {
     })
   }
 
-
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
 }
 

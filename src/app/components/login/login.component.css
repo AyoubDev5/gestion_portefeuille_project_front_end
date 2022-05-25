@@ -4,3 +4,10 @@
 .login-form {
 	padding: 12px;
 }
+.example-container .mat-form-field + .mat-form-field {
+	margin-left: 8px;
+  }
+  
+  .example-right-align {
+	text-align: right;
+  }

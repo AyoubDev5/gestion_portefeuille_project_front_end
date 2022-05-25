@@ -8,7 +8,9 @@ export const environment = {
 
 // export const baseURL = `https://azure-django-backend.azurewebsites.net`;
 export const baseURL = `http://127.0.0.1:8000`;
-//export const baseURL = `http://192.168.100.107:8000`;
+// export const baseURL = `http://192.168.100.107:8000`;
+// export const baseURL = `https://django-backend-stage.herokuapp.com`;
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

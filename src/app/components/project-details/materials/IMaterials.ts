@@ -1,7 +1,7 @@
 export interface IMaterials{
     id:number,
     name:string,
-    prix: string,
-    quantity: string,
+    prix: number,
+    quantity: number,
     project: number,
-  }
+}

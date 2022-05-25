@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   public redirectUrl: string = '/departments';
-
+  hide = true;
   form: FormGroup;
 
   constructor(private router: Router, private authService: AuthService) {}

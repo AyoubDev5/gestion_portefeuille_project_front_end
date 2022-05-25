@@ -12,8 +12,8 @@ export class DialogNewTeamComponent implements OnInit {
   freshList = ["chef_team", "nbr_employee", "isActive" ]
   teamForm: FormGroup;
   actionBtn : string = "Save";
-  constructor(    
-    private service : AuthService, 
+  constructor(
+    private service : AuthService,
     @Inject(MAT_DIALOG_DATA) public editData :any,
     private dialogRef : MatDialogRef<DialogNewTeamComponent>,) { }
 
@@ -37,7 +37,7 @@ export class DialogNewTeamComponent implements OnInit {
             console.log(this.teamForm.value);
             alert('Team added successfuly');
             this.teamForm.reset();
-            this.dialogRef.close('save');           
+            this.dialogRef.close('save');
             location.reload();
           },
           error:(err)=>{
