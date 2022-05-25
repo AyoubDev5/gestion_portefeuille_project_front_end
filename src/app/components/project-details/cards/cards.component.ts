@@ -13,6 +13,7 @@ export class CardsComponent implements OnInit {
   public idt: any;
   public lengthOfEmp: any;
   public TotalCost: any;
+  public countTache : any;
 
   constructor(
     private service: AuthService
@@ -29,6 +30,8 @@ export class CardsComponent implements OnInit {
     this.service.getMaterialByProjId(this.idp).subscribe(mats=>{
       this.mats=mats;
     })
+    
+    this.getCountTotalTache(this.idp);
   }
 
     getTotal(){
@@ -39,4 +42,16 @@ export class CardsComponent implements OnInit {
       }
       return this.TotalCost;
     }
+
+    getCountTotalTache(id){
+    this.service.getCountTache(id)
+    .subscribe({
+      next:(res)=>{
+        this.countTache=res
+        // console.log("count tache:",this.countTache);
+      },
+      error:(err)=>{console.log('err', err);
+      }
+    });
+  }
 }

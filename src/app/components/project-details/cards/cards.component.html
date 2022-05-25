@@ -6,7 +6,7 @@
                 <div class="stat-card">
                     <div class="stat-card__content">
                         <p class="text-uppercase mb-1 text-muted">Tache</p>
-                        <h2>21,254</h2>
+                        <h2>{{countTache || 0}}</h2>
                         <div>
                             <span class="text-danger font-weight-bold mr-1"><i class="fa fa-arrow-down"></i> -5%</span> 
                             <span class="text-muted">vs last 28 days</span>
@@ -24,7 +24,7 @@
                 <div class="stat-card">
                     <div class="stat-card__content">
                         <p class="text-uppercase mb-1 text-muted">Employees</p>
-                        <h2>{{lengthOfEmp}}</h2>
+                        <h2>{{lengthOfEmp || 0}}</h2>
                         <div>
                             <span class="text-danger font-weight-bold mr-1"><i class="fa fa-arrow-down"></i> -5%</span> 
                             <span class="text-muted">vs last 28 days</span>
@@ -42,7 +42,7 @@
                 <div class="stat-card">
                     <div class="stat-card__content" >
                         <p class="text-uppercase mb-1 text-muted">Material Costs</p>
-                        <h2>{{ getTotal() }}</h2>
+                        <h2>{{ getTotal() || 0}}</h2>
                         <div>
                             <span class="text-danger font-weight-bold mr-1"><i class="fa fa-arrow-down"></i> -5%</span> 
                             <span class="text-muted">vs last 28 days</span>

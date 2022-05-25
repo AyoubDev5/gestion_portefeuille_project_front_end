@@ -101,5 +101,20 @@ export class AuthService {
     return this.http.put<any>(`${baseURL}/api/tache/${id}`, data);
   }
 
+  //sum materiel
+  getSumMat(id): Observable<IMaterials[]>{
+    return this.http.get<IMaterials[]>(`${baseURL}/api/projet/${id}/materialCount`)
+  }
+
+  //count employee
+  getCountEmp(id): Observable<IEmployees[]>{
+    return this.http.get<IEmployees[]>(`${baseURL}/api/projet/${id}/employCount`);
+  }
+
+  //count tache
+  getCountTache(id): Observable<ITaches[]>{
+    return this.http.get<ITaches[]>(`${baseURL}/api/projet/${id}/tacheCount`);
+  }
+
 
 }
