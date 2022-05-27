@@ -15,6 +15,7 @@ export class ChartsComponent implements OnInit {
   public idprojet: number;
   public nomMat: any;
   public priceMat: any;
+  public Qte: any;
   public active:any;
   public noActive:any;
   constructor(
@@ -37,7 +38,8 @@ export class ChartsComponent implements OnInit {
     this.service.getMaterialByProjId(id).subscribe({
       next:(res)=>{
         this.nomMat=res.map((nom:any)=>nom.name);
-        this.priceMat=res.map((price:any)=>price.prix);
+        // this.priceMat=res.map((price:any)=>price.prix);
+        this.priceMat=res.map((item:any)=>item.prix * item.quantity);
         // console.log("price:",res);
           this.myChart = new Chart("canvas", {
             type: 'bar',
