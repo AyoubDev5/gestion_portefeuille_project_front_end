@@ -42,7 +42,7 @@ export class DialogprojectComponent implements OnInit {
       team : [this.selectedTeam, Validators.required],
       isActive : ['', Validators.required],
     });
-    console.log("editData", this.editData);
+    //console.log("editData", this.editData);
     if(this.editData){
       this.actionBtn = "Update";
       this.projectForm.controls['name'].setValue(this.editData.name);
@@ -61,8 +61,8 @@ export class DialogprojectComponent implements OnInit {
         this.service.postProject(this.projectForm.value)
         .subscribe({
           next:(res)=>{
-            console.log(this.projectForm.value);
-            console.log(this.selectedTeam);
+            // console.log(this.projectForm.value);
+            // console.log(this.selectedTeam);
             alert('project added successfuly');
             this.projectForm.reset();
             this.dialogRef.close('save');

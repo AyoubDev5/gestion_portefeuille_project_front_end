@@ -31,7 +31,7 @@ export class DialogMaterialComponent implements OnInit {
       quantity: ['', Validators.required],
       project: [this.idp, Validators.required],
     });
-    console.log("editData", this.editData);
+    //console.log("editData", this.editData);
     if(this.editData){
       this.actionBtn = "Update";
       this.formMaterial.controls['name'].setValue(this.editData.name);
@@ -46,7 +46,7 @@ export class DialogMaterialComponent implements OnInit {
         this.service.postNewMaterial(this.formMaterial.value)
         .subscribe({
           next:(res)=>{
-            console.log(this.formMaterial.value);
+            //console.log(this.formMaterial.value);
             alert('material added successfuly');
             this.formMaterial.reset();
             this.dialogRef.close('save');

@@ -1,25 +1,41 @@
 import { isNgTemplate } from '@angular/compiler';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DialogTeamEmpComponent } from './dialog-team-emp/dialog-team-emp.component';
+import {DialogEmailComponent} from './dialog-email/dialog-email.component'
+
+export interface DialogData {
+  email: string;
+  message: string;
+  nom: string;
+  subject: string;
+};
 
 @Component({
   selector: 'app-teams-emp',
   templateUrl: './teams-emp.component.html',
   styleUrls: ['./teams-emp.component.css']
 })
+
+
 export class TeamsEmpComponent implements OnInit {
   public empls:any[]=[];
   public idprojet: number;
   public idteam: number;
   public teams:any[]=[];
 
-  displayedColumns: string[] = ['nom', 'prenom', 'specialite','actions', 'tache'];
+  email: string;
+  message: string;
+  nom: string;
+  subject: string
+
+
+  displayedColumns: string[] = ['nom', 'prenom', 'specialite','email','actions', 'tache'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -103,6 +119,18 @@ export class TeamsEmpComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  openDialog(row : any): void {
+    const dialogRef = this.dialog.open(DialogEmailComponent, {
+      width: '500px',
+      data:row
+      //data: {nom: this.nom, email: this.email, message: this.message, subject:this.subject},
+     });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    //   this.row = result;
+    // });
   }
 
 }

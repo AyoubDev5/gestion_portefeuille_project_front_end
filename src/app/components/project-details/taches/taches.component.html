@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
 
 <button mat-raised-button class="addBtn my-3" color="primary" (click)="openDialogTache()">ADD TACHE</button>
 
@@ -16,6 +16,10 @@
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Tache Name</th>
       <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="created_at">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Created At</th>
+      <td mat-cell *matCellDef="let row"> {{row.created_at | date}} </td>
     </ng-container>
     <ng-container matColumnDef="isActive">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> isActive </th>

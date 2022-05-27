@@ -31,7 +31,7 @@ export class DialogComponent implements OnInit {
         this.dialogService.postDep(this.formDep.value)
         .subscribe({
           next:(res)=>{
-            console.log(this.formDep.value);
+            //console.log(this.formDep.value);
             alert('Department added successfuly');
             this.formDep.reset();
             this.dialogRef.close('save');

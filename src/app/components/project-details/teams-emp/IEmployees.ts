@@ -3,6 +3,7 @@ export interface IEmployees {
     nom:string,
     prenom:string,
     specialite:string,
+    email:string,
     team_id:number
   }
   

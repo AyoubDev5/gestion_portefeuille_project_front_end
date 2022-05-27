@@ -116,5 +116,18 @@ export class AuthService {
     return this.http.get<ITaches[]>(`${baseURL}/api/projet/${id}/tacheCount`);
   }
 
+  //send e-mail:
+  sendEmail(data):Observable<any>{
+    return this.http.post("https://node-server-construction.herokuapp.com/email", data);
+  }
+
+  //get tache active
+  getTacheActive(id): Observable<ITaches[]>{
+    return this.http.get<ITaches[]>(`${baseURL}/api/projet/${id}/tacheisActive`);
+  }
+
+  getTacheNoActive(id): Observable<ITaches[]>{
+    return this.http.get<ITaches[]>(`${baseURL}/api/projet/${id}/tacheisNotActive`);
+  }
 
 }

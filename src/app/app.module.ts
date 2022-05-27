@@ -16,7 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 //import material tools:\
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
@@ -49,10 +49,34 @@ import { CardsComponent } from './components/project-details/cards/cards.compone
 import { ChartsComponent } from './components/project-details/charts/charts.component';
 import { TachesComponent } from './components/project-details/taches/taches.component';
 import { DialogTacheComponent } from './components/project-details/taches/dialog-tache/dialog-tache.component';
+import { DialogEmailComponent } from './components/project-details/teams-emp/dialog-email/dialog-email.component';
+import { SidebarComponent } from './components/project-details/sidebar/sidebar.component';
 
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, LoginComponent, HomeComponent, ProjectComponent, DialogComponent, DialogprojectComponent, DialogNewTeamComponent, ProjectDetailsComponent, DashboardComponent, TeamsEmpComponent, MaterialsComponent, DialogMaterialComponent, DialogTeamEmpComponent, AdminPanelComponent, CardsComponent, ChartsComponent, TachesComponent, DialogTacheComponent],
+  declarations: [
+    AppComponent, 
+    NavbarComponent, 
+    LoginComponent, 
+    HomeComponent, 
+    ProjectComponent, 
+    DialogComponent, 
+    DialogprojectComponent, 
+    DialogNewTeamComponent, 
+    ProjectDetailsComponent, 
+    DashboardComponent, 
+    TeamsEmpComponent, 
+    MaterialsComponent, 
+    DialogMaterialComponent, 
+    DialogTeamEmpComponent, 
+    AdminPanelComponent, 
+    CardsComponent, 
+    ChartsComponent, 
+    TachesComponent, 
+    DialogTacheComponent, 
+    DialogEmailComponent, 
+    SidebarComponent
+],
   imports: [
     BrowserModule,
     AppRoutingModule,

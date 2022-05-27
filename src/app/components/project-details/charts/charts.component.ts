@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-// import { Chart } from 'chart.js';
+import { ActivatedRoute } from '@angular/router';
+import { Chart,registerables  } from 'chart.js';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-charts',
@@ -7,44 +9,94 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./charts.component.css']
 })
 export class ChartsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  //   const myChart = new Chart("myChart", {
-  //     type: 'bar',
-  //     data: {
-  //         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-  //         datasets: [{
-  //             label: '# of Votes',
-  //             data: [12, 19, 3, 5, 2, 3],
-  //             backgroundColor: [
-  //                 'rgba(255, 99, 132, 0.2)',
-  //                 'rgba(54, 162, 235, 0.2)',
-  //                 'rgba(255, 206, 86, 0.2)',
-  //                 'rgba(75, 192, 192, 0.2)',
-  //                 'rgba(153, 102, 255, 0.2)',
-  //                 'rgba(255, 159, 64, 0.2)'
-  //             ],
-  //             borderColor: [
-  //                 'rgba(255, 99, 132, 1)',
-  //                 'rgba(54, 162, 235, 1)',
-  //                 'rgba(255, 206, 86, 1)',
-  //                 'rgba(75, 192, 192, 1)',
-  //                 'rgba(153, 102, 255, 1)',
-  //                 'rgba(255, 159, 64, 1)'
-  //             ],
-  //             borderWidth: 1
-  //         }]
-  //     },
-  //     options: {
-  //         scales: {
-  //             y: {
-  //                 beginAtZero: true
-  //             }
-  //         }
-  //     }
-  // });
+  myChart:any=[];
+  chartActive:any=[];
+  public materials: any[] =[];
+  public idprojet: number;
+  public nomMat: any;
+  public priceMat: any;
+  public active:any;
+  public noActive:any;
+  constructor(
+    private service: AuthService,
+    private router: ActivatedRoute,
+  ) {
+    Chart.register(...registerables);
   }
 
+  ngOnInit(): void {
+    this.router.params.subscribe((params) => {
+      this.idprojet = params['id'];
+      //console.log("params",this.idprojet);
+      this.getMaterials(this.idprojet);
+      this.getTacheActive(this.idprojet);
+    })
+  }
+
+  getMaterials(id: number) {
+    this.service.getMaterialByProjId(id).subscribe({
+      next:(res)=>{
+        this.nomMat=res.map((nom:any)=>nom.name);
+        this.priceMat=res.map((price:any)=>price.prix);
+        // console.log("price:",res);
+          this.myChart = new Chart("canvas", {
+            type: 'bar',
+            data: {
+                labels:this.nomMat,
+                datasets: [{
+                    label: 'Prix des Materials',
+                    data: this.priceMat,
+                    borderColor: '#3e95cd',
+                    // fill: false,
+                    backgroundColor: 'rgba(93, 175, 89, 0.1)',
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+      },
+      error:(err)=>{console.log('err', err);
+      }
+    });
+  }
+  getTacheActive(id: number) {
+    this.service.getTacheActive(id).subscribe({
+      next:(res)=>{
+        this.active=res
+         this.service.getTacheNoActive(id).subscribe({
+            next:(resp)=>{
+                this.noActive=resp;
+
+                this.chartActive = new Chart("pie", {
+                  type: 'pie',
+                  data: {
+                    labels: [
+                      'Tache Is Not Active',
+                      'Tache Is Active',
+                    ],
+                    datasets: [{
+                      label: 'My First Dataset',
+                      data: [this.active, this.noActive ],
+                      backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                      ],
+                      hoverOffset: 4,
+                      offset:10
+                    }]
+                  },
+              });
+            }
+         })
+      },
+      error:(err)=>{console.log('err', err);
+      }
+    });
+  }
 }

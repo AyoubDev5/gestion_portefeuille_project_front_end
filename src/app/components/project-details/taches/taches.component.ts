@@ -19,7 +19,7 @@ export class TachesComponent implements OnInit {
   public idpro: any;
   public idteam : any;
 
-  displayedColumns: string[] = ['name', 'isActive','actions'];
+  displayedColumns: string[] = ['name', 'isActive','created_at','actions'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -40,7 +40,7 @@ export class TachesComponent implements OnInit {
       this.idemp = params['id'];
       let idempl = String(this.idemp);
       localStorage.setItem('idemp',idempl);
-      console.log("params",this.idemp);
+      //console.log("params",this.idemp);
       this.getTaches(this.idpro,this.idteam,this.idemp);
     })
   }
@@ -48,7 +48,7 @@ export class TachesComponent implements OnInit {
   getTaches(idp: number,idt:number, idemp:number) {
     this.service.getTacheByIdEmp(idp,idt,idemp).subscribe({
       next:(res)=>{
-        console.log(res);
+        //console.log(res);
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

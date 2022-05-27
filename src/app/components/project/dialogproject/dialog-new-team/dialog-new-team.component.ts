@@ -34,7 +34,7 @@ export class DialogNewTeamComponent implements OnInit {
         this.service.postNewTeam(this.teamForm.value)
         .subscribe({
           next:(res)=>{
-            console.log(this.teamForm.value);
+            //console.log(this.teamForm.value);
             alert('Team added successfuly');
             this.teamForm.reset();
             this.dialogRef.close('save');

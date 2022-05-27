@@ -27,14 +27,16 @@ export class DialogTeamEmpComponent implements OnInit {
       prenom : ['', Validators.required],
       nom: ['', Validators.required],
       specialite: ['', Validators.required],
+      email: ['', Validators.required],
       team:[this.idt, Validators.required],
     });
-    console.log("editData", this.editData);
+    //console.log("editData", this.editData);
     if(this.editData){
       this.actionBtn = "Update";
       this.emplForm.controls['nom'].setValue(this.editData.nom);
       this.emplForm.controls['prenom'].setValue(this.editData.prenom);
       this.emplForm.controls['specialite'].setValue(this.editData.specialite);
+      this.emplForm.controls['email'].setValue(this.editData.email);
       this.emplForm.controls['team'].setValue(this.editData.team);
     }
   }
@@ -44,7 +46,7 @@ export class DialogTeamEmpComponent implements OnInit {
         this.service.postEmployByTeamId(this.emplForm.value)
         .subscribe({
           next:(res)=>{
-            console.log(this.emplForm.value);
+            //console.log(this.emplForm.value);
             alert('employee added successfuly');
             this.emplForm.reset();
             this.dialogRef.close('save');

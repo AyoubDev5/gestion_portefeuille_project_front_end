@@ -26,13 +26,13 @@ export class DialogTacheComponent implements OnInit {
 
   ngOnInit(): void {
     this.idemp = localStorage.getItem('idemp');
-    console.log("emp",this.idemp);
+    //console.log("emp",this.idemp);
     this.formTache = this.formBuilder.group({
       name : ['', Validators.required],
       isActive: ['', Validators.required],
       employee:[this.idemp, Validators.required],
     });
-    console.log("editData", this.editData);
+    //console.log("editData", this.editData);
     if(this.editData){
       this.actionBtn = "Update";
       this.formTache.controls['name'].setValue(this.editData.name);
@@ -48,7 +48,7 @@ export class DialogTacheComponent implements OnInit {
         this.service.postTacheByEmplId(this.formTache.value)
         .subscribe({
           next:(res)=>{
-            console.log(this.formTache.value);
+            //console.log(this.formTache.value);
             alert('Tache added successfuly');
             this.formTache.reset();
             this.dialogRef.close('save');

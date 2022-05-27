@@ -14,6 +14,10 @@
         <mat-label>Speciality</mat-label>
         <input matInput placeholder="" formControlName="specialite">
     </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>e-mail</mat-label>
+        <input matInput placeholder="" formControlName="email">
+    </mat-form-field>
 
     </form>
 </div>
@@ -22,7 +26,7 @@
         <button mat-raised-button color="warn" mat-dialog-close>
             close
         </button>
-        <button style="margin-left: 10px ;" mat-raised-button color="primary" (click)="addEmpl()">
+        <button style="margin-left: 10px; " mat-raised-button color="primary" (click)="addEmpl()">
             {{actionBtn }}
         </button>
     </div>

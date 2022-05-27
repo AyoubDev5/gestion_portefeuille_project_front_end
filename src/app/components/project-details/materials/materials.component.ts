@@ -15,7 +15,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class MaterialsComponent implements OnInit {
   public materials: any[] =[];
-  public idprojet: number;
+  public idprojet: any;
 
   displayedColumns: string[] = ['name', 'prix', 'quantity', 'actions'];
   dataSource!: MatTableDataSource<any>;
@@ -30,18 +30,16 @@ export class MaterialsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.router.params.subscribe((params) => {
-      this.idprojet = params['id'];
-      console.log("params",this.idprojet);
+      this.idprojet = localStorage.getItem('id_pro')
+      //console.log("params",this.idprojet);
       this.getMaterials(this.idprojet);
-    })
 
   }
 
   getMaterials(id: number) {
     this.service.getMaterialByProjId(id).subscribe({
       next:(res)=>{
-        console.log(res);
+        //console.log(res);
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;      
