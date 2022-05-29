@@ -8,6 +8,7 @@ import { ProjectDetailsComponent } from './components/project-details/project-de
 import { TachesComponent } from './components/project-details/taches/taches.component';
 import { TeamsEmpComponent } from './components/project-details/teams-emp/teams-emp.component';
 import { MaterialsComponent } from './components/project-details/materials/materials.component';
+import { DepartmentDetailsComponent } from './components/department-details/department-details.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'project/:id/team/:id/employee/:id/tache', component: TachesComponent, canActivate: [AuthGuard] },
   { path: 'department/:id/project/:id/details/employees', component: TeamsEmpComponent, canActivate: [AuthGuard] },
   { path: 'department/:id/project/:id/details/materials', component: MaterialsComponent, canActivate: [AuthGuard] },
+  { path: 'department/details', component: DepartmentDetailsComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

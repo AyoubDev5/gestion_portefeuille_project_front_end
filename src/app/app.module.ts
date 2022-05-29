@@ -36,7 +36,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSelectModule} from '@angular/material/select';
 import { DialogNewTeamComponent } from './components/project/dialogproject/dialog-new-team/dialog-new-team.component';
 import { ProjectDetailsComponent } from './components/project-details/project-details.component';
-import { DashboardComponent } from './components/project-details/dashboard/dashboard.component';
 import { TeamsEmpComponent } from './components/project-details/teams-emp/teams-emp.component';
 import { MaterialsComponent } from './components/project-details/materials/materials.component';
 import { DialogMaterialComponent } from './components/project-details/materials/dialog-material/dialog-material.component';
@@ -44,13 +43,13 @@ import { DialogTeamEmpComponent } from './components/project-details/teams-emp/d
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
-import { AdminPanelComponent } from './components/project-details/admin-panel/admin-panel.component';
 import { CardsComponent } from './components/project-details/cards/cards.component';
 import { ChartsComponent } from './components/project-details/charts/charts.component';
 import { TachesComponent } from './components/project-details/taches/taches.component';
 import { DialogTacheComponent } from './components/project-details/taches/dialog-tache/dialog-tache.component';
 import { DialogEmailComponent } from './components/project-details/teams-emp/dialog-email/dialog-email.component';
 import { SidebarComponent } from './components/project-details/sidebar/sidebar.component';
+import { DepartmentDetailsComponent } from './components/department-details/department-details.component';
 
 
 @NgModule({
@@ -64,18 +63,17 @@ import { SidebarComponent } from './components/project-details/sidebar/sidebar.c
     DialogprojectComponent, 
     DialogNewTeamComponent, 
     ProjectDetailsComponent, 
-    DashboardComponent, 
     TeamsEmpComponent, 
     MaterialsComponent, 
     DialogMaterialComponent, 
     DialogTeamEmpComponent, 
-    AdminPanelComponent, 
     CardsComponent, 
     ChartsComponent, 
     TachesComponent, 
     DialogTacheComponent, 
     DialogEmailComponent, 
-    SidebarComponent
+    SidebarComponent, 
+    DepartmentDetailsComponent
 ],
   imports: [
     BrowserModule,
@@ -104,9 +102,11 @@ import { SidebarComponent } from './components/project-details/sidebar/sidebar.c
     MatRadioModule,
     MatGridListModule,
     MatMenuModule,
-    LayoutModule
+    LayoutModule,
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

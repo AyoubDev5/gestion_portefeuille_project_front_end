@@ -1,22 +1,20 @@
 <app-navbar></app-navbar>
 
-<div class="container">
-  <div class="example-button-container">
-    <button mat-mini-fab color="dark" class="icn btn btn-primary" aria-label="Example icon button with a plus one icon" (click)="openDialog()">
-      <mat-icon>plus_one</mat-icon>
-    </button>
-  </div>
-</div>
-<div class="container  mt-5">
-  <div class="row cr">
-    <div class="col-sm-4 cr" *ngFor="let dep of deps">
-      <div class="card">
-        <div class="card-body">
-          <h1 class="card-title">{{dep.name}}</h1>
-          <a routerLink="/department/{{dep.id}}/projects" class="btn btn-primary">To Project</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="example-button-container">
+<button mat-raised-button class="addBtn" color="primary" (click)="openDialog()">ADD DEPARTMENT</button>
 </div>
 
+<div id=container>
+  <mat-card id="card" *ngFor="let dep of deps">
+    <mat-card-title>{{dep.name}}</mat-card-title>
+    <mat-card-subtitle>{{dep.created_at | date}}</mat-card-subtitle>
+    <mat-card-actions>
+      <a routerLink="/department/details">
+        <button mat-raised-button>About</button>
+      </a>
+      <a routerLink="/department/{{dep.id}}/projects">
+        <button mat-raised-button color="primary">Explore</button>
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</div>

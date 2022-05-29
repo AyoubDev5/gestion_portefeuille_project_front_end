@@ -25,7 +25,7 @@ export interface DialogData {
 
 export class TeamsEmpComponent implements OnInit {
   public empls:any[]=[];
-  public idprojet: number;
+  public idprojet: any;
   public idteam: number;
   public teams:any[]=[];
 
@@ -49,25 +49,17 @@ export class TeamsEmpComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-    this.route.params.subscribe((params) => {
-      this.idprojet = params['id'];
-      let idp=String(this.idprojet);
-      localStorage.setItem("id_pro",idp);
+      this.idprojet = localStorage.getItem('id_pro');
       this.service.getTeamByProjetId(this.idprojet).subscribe(team=>{
         this.teams=team
         this.teams.find(tea=>{
-          // console.log("ta",tea.id);
           this.idteam=tea.id;
           let idt=String(this.idteam)
           localStorage.setItem("id_team",idt)
           // console.log("t",this.idteam);
         })
         this.GetAllEmpls(this.idprojet,this.idteam)
-
-
       });
-    })
 
   }
 

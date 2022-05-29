@@ -1,7 +1,9 @@
 <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
 	<div class="logo-container">
 		<button class="logo" (click)="toggleCollapse()">C</button>
+		<a class="logo-link" routerLink="/departments">
 		<div class="logo-text" *ngIf="collapsed">CHU</div>
+		</a>
 		<button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">
 			<i class="fal fa-times close-icon"></i>
 		</button>
