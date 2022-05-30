@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'project/:id/team/:id/employee/:id/tache', component: TachesComponent, canActivate: [AuthGuard] },
   { path: 'department/:id/project/:id/details/employees', component: TeamsEmpComponent, canActivate: [AuthGuard] },
   { path: 'department/:id/project/:id/details/materials', component: MaterialsComponent, canActivate: [AuthGuard] },
-  { path: 'department/details', component: DepartmentDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'department/:id/details', component: DepartmentDetailsComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

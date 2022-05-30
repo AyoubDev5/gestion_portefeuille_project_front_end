@@ -9,7 +9,7 @@
     <mat-card-title>{{dep.name}}</mat-card-title>
     <mat-card-subtitle>{{dep.created_at | date}}</mat-card-subtitle>
     <mat-card-actions>
-      <a routerLink="/department/details">
+      <a routerLink="/department/{{dep.id}}/details">
         <button mat-raised-button>About</button>
       </a>
       <a routerLink="/department/{{dep.id}}/projects">

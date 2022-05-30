@@ -22,7 +22,7 @@ export class ProjectComponent implements OnInit {
   public projects: any[] =[];
   public id: number;
 
-  displayedColumns: string[] = ['name', 'date_debut', 'date_fin','created_at', 'isActive', 'actions'];
+  displayedColumns: string[] = ['title', 'start', 'end','created_at', 'isActive', 'actions'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

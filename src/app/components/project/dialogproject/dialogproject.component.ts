@@ -7,6 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogNewTeamComponent } from './dialog-new-team/dialog-new-team.component';
 import { ActivatedRoute } from '@angular/router';
 
+import { DatePipe } from '@angular/common';
+
 @Component({
   selector: 'app-dialogproject',
   templateUrl: './dialogproject.component.html',
@@ -14,11 +16,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DialogprojectComponent implements OnInit {
 
-  freshList = ["name", "date_debut", "date_fin","created_at","modify_at","isActive" ]
+  freshList = ["title", "start", "end","created_at","modify_at","isActive" ]
   projectForm: FormGroup;
   actionBtn : string = "Save";
   public selectedTeam: any;
+  startDate: any;
+  endDate: any;
   public id_dep: any;
+
+  pipe = new DatePipe('en-US');
 
   constructor(
     private formBuilder : FormBuilder, 
@@ -34,9 +40,9 @@ export class DialogprojectComponent implements OnInit {
   ngOnInit(): void {
     this.id_dep = localStorage.getItem('id_dep');
     this.projectForm = this.formBuilder.group({
-      name : ['', Validators.required],
-      date_debut: ['', Validators.required],
-      date_fin: ['', Validators.required],
+      title : ['', Validators.required],
+      start: ['', Validators.required],
+      end: ['', Validators.required],
       description: ['', Validators.required],
       department : [this.id_dep, Validators.required],
       team : [this.selectedTeam, Validators.required],
@@ -45,9 +51,9 @@ export class DialogprojectComponent implements OnInit {
     //console.log("editData", this.editData);
     if(this.editData){
       this.actionBtn = "Update";
-      this.projectForm.controls['name'].setValue(this.editData.name);
-      this.projectForm.controls['date_debut'].setValue(this.editData.date_debut);
-      this.projectForm.controls['date_fin'].setValue(this.editData.date_fin);
+      this.projectForm.controls['title'].setValue(this.editData.name);
+      this.projectForm.controls['start'].setValue(this.editData.date_debut);
+      this.projectForm.controls['end'].setValue(this.editData.date_fin);
       this.projectForm.controls['description'].setValue(this.editData.description);
       this.projectForm.controls['team'].setValue(this.editData.team);
     }
@@ -61,17 +67,16 @@ export class DialogprojectComponent implements OnInit {
         this.service.postProject(this.projectForm.value)
         .subscribe({
           next:(res)=>{
-            // console.log(this.projectForm.value);
-            // console.log(this.selectedTeam);
             alert('project added successfuly');
             this.projectForm.reset();
             this.dialogRef.close('save');
-            location.reload();
+            //location.reload();
           },
           error:(err)=>{
             console.log('err', err)
           }
         })
+
       }
     }
       else(

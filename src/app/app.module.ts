@@ -51,7 +51,16 @@ import { DialogEmailComponent } from './components/project-details/teams-emp/dia
 import { SidebarComponent } from './components/project-details/sidebar/sidebar.component';
 import { DepartmentDetailsComponent } from './components/department-details/department-details.component';
 
+//calendar:
+import { FullCalendarModule } from '@fullcalendar/angular'; 
+import dayGridPlugin from '@fullcalendar/daygrid'; 
+import interactionPlugin from '@fullcalendar/interaction'; 
+import { ModalModule } from 'ngx-bootstrap/modal';
 
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
 @NgModule({
   declarations: [
     AppComponent, 
@@ -103,6 +112,8 @@ import { DepartmentDetailsComponent } from './components/department-details/depa
     MatGridListModule,
     MatMenuModule,
     LayoutModule,
+    FullCalendarModule,
+    ModalModule.forRoot()
   ],
   providers: [
     AuthGuard,

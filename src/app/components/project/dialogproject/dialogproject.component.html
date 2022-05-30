@@ -4,19 +4,32 @@
     <form [formGroup]="projectForm">
         <mat-form-field appearance="outline">
             <mat-label>Project Name</mat-label>
-            <input matInput placeholder="" formControlName="name">
+            <input matInput placeholder="" formControlName="title">
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+    <!--    <mat-form-field appearance="fill">
             <mat-label>Enter a date range</mat-label>
             <mat-date-range-input [rangePicker]="picker">
-              <input matStartDate placeholder="Start date" formControlName="date_debut">
-              <input matEndDate placeholder="End date" formControlName="date_fin">
+              <input matStartDate placeholder="Start date" formControlName="start">
+              <input matEndDate placeholder="End date" formControlName="end">
             </mat-date-range-input>
             <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-date-range-picker #picker></mat-date-range-picker>
-          </mat-form-field>
+          </mat-form-field> -->
+
+          
+        <mat-form-field appearance="outline">
+            <mat-label>Start Date</mat-label>
+            <input matInput type="date" placeholder="Start date" formControlName="start">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>End Date</mat-label>
+            <input matInput type="date" placeholder="End date" formControlName="end">
+        </mat-form-field>
+
+
 
             <mat-form-field appearance="fill">
             <mat-label>Team</mat-label>
