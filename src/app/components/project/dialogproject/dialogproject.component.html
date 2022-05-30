@@ -48,7 +48,7 @@
 
             <mat-form-field appearance="fill">
             <mat-label>Team</mat-label>
-            <mat-select [(ngModel)]="selectedTeam" formControlName="team">
+            <mat-select [(value)]="selectedTeam" formControlName="team">
                 <mat-option (click)="openDialogTeam()">---NEW TEAM---</mat-option>
                 <mat-option *ngFor="let team of teams" [value]="team.id">
                     {{team.chef_team}}
@@ -56,24 +56,19 @@
             </mat-select>
             </mat-form-field>
 
-    <!-- <button class="my-4" mat-raised-button (click)="openDialogTeam()">NEW TEAM</button> -->
-
         <mat-form-field appearance="outline">
             <mat-label>Description</mat-label>
             <textarea matInput formControlName="description"></textarea>
         </mat-form-field>
 
-
-        <label id="example-radio-group-label">is Active</label>
-        <mat-radio-group
-          aria-labelledby="example-radio-group-label"
-          class="example-radio-group"
-          >
-          <mat-radio-group aria-label="Select an option" class="example-radio-group" formControlName="isActive">
-            <mat-radio-button value="True"><mat-icon>thumb_up</mat-icon></mat-radio-button>
-            <mat-radio-button value="False"><mat-icon>thumb_down</mat-icon></mat-radio-button>
-          </mat-radio-group>
-        </mat-radio-group>
+        <mat-form-field appearance="fill">
+            <mat-label>Status</mat-label>
+            <mat-select [(value)]="selectedStatus" formControlName="isActive">
+                <mat-option *ngFor="let option of options" [value]="option.id">
+                    {{option.title}}
+                </mat-option>
+            </mat-select>
+            </mat-form-field>
 
     </form>
 </div>
@@ -82,7 +77,7 @@
         <button mat-raised-button color="warn" mat-dialog-close>
             close
         </button>
-        <button style="margin-left: 10px ;" mat-raised-button color="primary" (click)="addProject(selectedTeam)">
+        <button style="margin-left: 10px ;" mat-raised-button color="primary" (click)="addProject(selectedTeam, selectedStatus)">
             {{actionBtn }}
         </button>
     </div>

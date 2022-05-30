@@ -2,16 +2,13 @@
   /*float: right;*/
   margin: 10px 20px;
 }
-#container{
-  margin: 100px 100px 100px 100px;
-  display: flex;
-  justify-content: center;
+.example-card {
+  max-width: 400px;
 }
-
-mat-card {
-    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-    display: block;
-    position: relative;
-    padding: 26px;
-    border-radius: 4px;
+mat-icon{
+  font-size: 20px;
+}
+.example-card{
+    max-width: 300px;
+    margin: 20px;
 }

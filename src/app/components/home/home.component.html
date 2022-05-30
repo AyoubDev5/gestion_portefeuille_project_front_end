@@ -4,17 +4,24 @@
 <button mat-raised-button class="addBtn" color="primary" (click)="openDialog()">ADD DEPARTMENT</button>
 </div>
 
-<div id=container>
-  <mat-card id="card" *ngFor="let dep of deps">
-    <mat-card-title>{{dep.name}}</mat-card-title>
-    <mat-card-subtitle>{{dep.created_at | date}}</mat-card-subtitle>
+<div class="container d-flex justify-content-center">
+  <div class="row">
+  <mat-card class="example-card" *ngFor="let dep of deps">
+    <img mat-card-image src="https://i.ibb.co/6YNy4Pj/Logo-CHU.png" alt="Logo-CHU">
+    <mat-card-content>
+      <mat-card-title>{{dep.name}}</mat-card-title>
+      <mat-card-subtitle>{{dep.created_at | date}}</mat-card-subtitle>
+    </mat-card-content>
     <mat-card-actions>
-      <a routerLink="/department/{{dep.id}}/details">
-        <button mat-raised-button>About</button>
-      </a>
-      <a routerLink="/department/{{dep.id}}/projects">
-        <button mat-raised-button color="primary">Explore</button>
-      </a>
-    </mat-card-actions>
+        <a routerLink="/department/{{dep.id}}/projects">
+          <button mat-button color="primary">Explore</button>
+        </a>
+        <a routerLink="/department/{{dep.id}}/details">
+          <button mat-button>
+            About <mat-icon>calendar_today</mat-icon>
+          </button>
+        </a>
+      </mat-card-actions>
   </mat-card>
+  </div>
 </div>

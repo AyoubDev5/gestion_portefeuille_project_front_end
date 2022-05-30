@@ -4,3 +4,8 @@ html, body {
 	height: 100%;
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.fc-direction-ltr .fc-daygrid-event .fc-event-time {
+    margin-right: 3px;
+    display: none;
+}

@@ -46,7 +46,7 @@ export class ChartsComponent implements OnInit {
             data: {
                 labels:this.nomMat,
                 datasets: [{
-                    label: 'Prix des Materials',
+                    label: 'Materials Total Price',
                     data: this.priceMat,
                     borderColor: '#3e95cd',
                     // fill: false,

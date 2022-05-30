@@ -25,6 +25,19 @@ export class DialogprojectComponent implements OnInit {
   public id_dep: any;
 
   pipe = new DatePipe('en-US');
+//Select handle
+  options: any[] = [
+    {
+      id: true,
+      title: 'Active',
+    },
+    {
+      id: false,
+      title: 'Not Active',
+    },
+  ];
+
+  selectedStatus: any;
 
   constructor(
     private formBuilder : FormBuilder, 
@@ -45,23 +58,24 @@ export class DialogprojectComponent implements OnInit {
       end: ['', Validators.required],
       description: ['', Validators.required],
       department : [this.id_dep, Validators.required],
-      team : [this.selectedTeam, Validators.required],
+      team : ['', Validators.required],
       isActive : ['', Validators.required],
     });
-    //console.log("editData", this.editData);
+    console.log("editData", this.editData);
     if(this.editData){
       this.actionBtn = "Update";
-      this.projectForm.controls['title'].setValue(this.editData.name);
-      this.projectForm.controls['start'].setValue(this.editData.date_debut);
-      this.projectForm.controls['end'].setValue(this.editData.date_fin);
+      this.projectForm.controls['title'].setValue(this.editData.title);
+      this.projectForm.controls['start'].setValue(this.editData.start);
+      this.projectForm.controls['end'].setValue(this.editData.end);
       this.projectForm.controls['description'].setValue(this.editData.description);
       this.projectForm.controls['team'].setValue(this.editData.team);
+      this.projectForm.controls['isActive'].setValue(this.editData.isActive);
     }
 
     this.fetchAllTeams();
   }
 
-  addProject(selectedTeam){
+  addProject(selectedTeam, selectedStatus){
     if(!this.editData){
       if(this.projectForm.valid){
         this.service.postProject(this.projectForm.value)
@@ -70,7 +84,7 @@ export class DialogprojectComponent implements OnInit {
             alert('project added successfuly');
             this.projectForm.reset();
             this.dialogRef.close('save');
-            //location.reload();
+            location.reload();
           },
           error:(err)=>{
             console.log('err', err)
