@@ -59,7 +59,7 @@ export class DialogprojectComponent implements OnInit {
       description: ['', Validators.required],
       department : [this.id_dep, Validators.required],
       team : ['', Validators.required],
-      isActive : ['', Validators.required],
+      // isActive : ['', Validators.required],
     });
     console.log("editData", this.editData);
     if(this.editData){
@@ -69,7 +69,7 @@ export class DialogprojectComponent implements OnInit {
       this.projectForm.controls['endd'].setValue(this.editData.endd);
       this.projectForm.controls['description'].setValue(this.editData.description);
       this.projectForm.controls['team'].setValue(this.editData.team);
-      this.projectForm.controls['isActive'].setValue(this.editData.isActive);
+      // this.projectForm.controls['isActive'].setValue(this.editData.isActive);
     }
 
     this.fetchAllTeams();
@@ -84,7 +84,7 @@ export class DialogprojectComponent implements OnInit {
             alert('project added successfuly');
             this.projectForm.reset();
             this.dialogRef.close('save');
-            // location.reload();
+            location.reload();
           },
           error:(err)=>{
             console.log('err', err)

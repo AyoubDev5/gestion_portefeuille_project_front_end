@@ -135,4 +135,9 @@ export class AuthService {
     return this.http.get<ITaches[]>(`${baseURL}/api/projet/${id}/tacheisNotActive`);
   }
 
+  //change activities
+  changeActivityProject(){
+    return this.http.get<ITeams[]>(`${baseURL}/api/projetEvent`)
+  }
+
 }

@@ -14,7 +14,7 @@
     </mat-card-content>
     <mat-card-actions>
         <a routerLink="/department/{{dep.id}}/projects">
-          <button mat-button color="primary">Explore</button>
+          <button mat-button color="primary" (click)="changeActivity()">Explore</button>
         </a>
         <a routerLink="/department/{{dep.id}}/details">
           <button mat-button>

@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
     this.depService.getDep().subscribe(deps=>{
       this.deps=deps;
     });
+    this.changeActivity();
 
   }
 
@@ -42,5 +43,13 @@ export class HomeComponent implements OnInit {
     //   }
     // });
   }
+
+  changeActivity(){
+    this.depService.changeActivityProject()
+    .subscribe(res=>{
+      console.log("jjjjjj");
+      
+    }
+  )}
 
 }

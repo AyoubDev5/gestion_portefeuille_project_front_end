@@ -51,6 +51,10 @@ export class ProjectComponent implements OnInit {
     this.service.getProjects().subscribe(projects=>{
       this.projects=projects;
     });
+
+    this.service.changeActivityProject().subscribe(res => {
+      console.log('Success');
+    })
   }
 
 
