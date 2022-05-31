@@ -16,7 +16,7 @@ import { DatePipe } from '@angular/common';
 })
 export class DialogprojectComponent implements OnInit {
 
-  freshList = ["title", "start", "end","created_at","modify_at","isActive" ]
+  freshList = ["title", "start", "endd","created_at","modify_at","isActive" ]
   projectForm: FormGroup;
   actionBtn : string = "Save";
   public selectedTeam: any;
@@ -55,7 +55,7 @@ export class DialogprojectComponent implements OnInit {
     this.projectForm = this.formBuilder.group({
       title : ['', Validators.required],
       start: ['', Validators.required],
-      end: ['', Validators.required],
+      endd: ['', Validators.required],
       description: ['', Validators.required],
       department : [this.id_dep, Validators.required],
       team : ['', Validators.required],
@@ -66,7 +66,7 @@ export class DialogprojectComponent implements OnInit {
       this.actionBtn = "Update";
       this.projectForm.controls['title'].setValue(this.editData.title);
       this.projectForm.controls['start'].setValue(this.editData.start);
-      this.projectForm.controls['end'].setValue(this.editData.end);
+      this.projectForm.controls['endd'].setValue(this.editData.endd);
       this.projectForm.controls['description'].setValue(this.editData.description);
       this.projectForm.controls['team'].setValue(this.editData.team);
       this.projectForm.controls['isActive'].setValue(this.editData.isActive);
@@ -84,7 +84,7 @@ export class DialogprojectComponent implements OnInit {
             alert('project added successfuly');
             this.projectForm.reset();
             this.dialogRef.close('save');
-            location.reload();
+            // location.reload();
           },
           error:(err)=>{
             console.log('err', err)

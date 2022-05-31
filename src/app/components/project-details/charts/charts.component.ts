@@ -84,7 +84,7 @@ export class ChartsComponent implements OnInit {
                     ],
                     datasets: [{
                       label: 'My First Dataset',
-                      data: [this.active, this.noActive ],
+                      data: [this.noActive, this.active ],
                       backgroundColor: [
                         'rgb(255, 99, 132)',
                         'rgb(54, 162, 235)',

@@ -42,6 +42,7 @@ export class DepartmentDetailsComponent implements OnInit {
   ) {}
   onDateClick(res: any) {
     alert('Clicked on date : ' + res.dateStr);
+    console.log(res)
   }
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -49,8 +50,10 @@ export class DepartmentDetailsComponent implements OnInit {
     setTimeout(() => {
       return this.service.getProjectsByDepIdCalendar(this.id)
         .subscribe((res: any) => {
-          this.Events.push(res);
-          console.log(this.Events);
+          this.Events = res.map(evt => {
+            return {title: evt.title, start: evt.start, end: evt.endd}
+          });
+          //console.log(this.Events);
         });
     }, 2200);
     setTimeout(() => {

@@ -1,6 +1,8 @@
 export interface ITaches{
   id:number,
-  name:string,
+  title:string,
+  start:string,
+  end:string,
   isActive:boolean,
   employee:number,
 }
