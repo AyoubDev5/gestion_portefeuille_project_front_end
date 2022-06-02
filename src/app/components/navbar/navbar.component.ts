@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { baseURL } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Emitters } from "../../emitters/emitters";
 
 @Component({
   selector: 'app-navbar',
@@ -19,10 +18,10 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    Emitters.authEmitter.subscribe(
-      (auth: boolean) => {
-      }
-    )
+    // Emitters.authEmitter.subscribe(
+    //   (auth: boolean) => {
+    //   }
+    // )
   }
 
   logout(){

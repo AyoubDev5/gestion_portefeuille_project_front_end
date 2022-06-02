@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,12 @@ export class LoginComponent implements OnInit {
   hide = true;
   form: FormGroup;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router, 
+    private authService: AuthService,
+    private cookies: CookieService
+    ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -30,7 +37,8 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       this.authService.login(this.form.value).subscribe((res) => {
         if (res.success) {
-          localStorage.setItem('token', res.jwt);
+          this.cookies.set('token', res.jwt);
+          localStorage.setItem('jwt', res.jwt);
           this.redirect();
         } else {
           alert('Incorrect Credentials');

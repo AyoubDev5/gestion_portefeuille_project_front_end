@@ -29,33 +29,33 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthGuard } from './auth.guard';
-import { ProjectComponent } from './components/project/project.component';
 import { DialogComponent } from './components/home/dialog/dialog.component';
-import { DialogprojectComponent } from './components/project/dialogproject/dialogproject.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSelectModule} from '@angular/material/select';
-import { DialogNewTeamComponent } from './components/project/dialogproject/dialog-new-team/dialog-new-team.component';
-import { ProjectDetailsComponent } from './components/project-details/project-details.component';
-import { TeamsEmpComponent } from './components/project-details/teams-emp/teams-emp.component';
-import { MaterialsComponent } from './components/project-details/materials/materials.component';
-import { DialogMaterialComponent } from './components/project-details/materials/dialog-material/dialog-material.component';
-import { DialogTeamEmpComponent } from './components/project-details/teams-emp/dialog-team-emp/dialog-team-emp.component';
+
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
-import { CardsComponent } from './components/project-details/cards/cards.component';
-import { ChartsComponent } from './components/project-details/charts/charts.component';
-import { TachesComponent } from './components/project-details/taches/taches.component';
-import { DialogTacheComponent } from './components/project-details/taches/dialog-tache/dialog-tache.component';
-import { DialogEmailComponent } from './components/project-details/teams-emp/dialog-email/dialog-email.component';
-import { SidebarComponent } from './components/project-details/sidebar/sidebar.component';
-import { DepartmentDetailsComponent } from './components/department-details/department-details.component';
+
 
 //calendar:
 import { FullCalendarModule } from '@fullcalendar/angular'; 
 import dayGridPlugin from '@fullcalendar/daygrid'; 
 import interactionPlugin from '@fullcalendar/interaction'; 
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ProjectComponent } from './components/project/project.component';
+import { DialogProjectComponent } from './components/project/dialog-project/dialog-project.component';
+import { ProjectDetailsComponent } from './components/project/project-details/project-details.component';
+import {CookieService} from 'ngx-cookie-service';
+import { TacheComponent } from './components/project/project-details/tache/tache.component';
+import { DialogTacheComponent } from './components/project/project-details/tache/dialog-tache/dialog-tache.component';
+import { EmployeeComponent } from './components/project/project-details/employee/employee.component';
+import { DialogEmployeeComponent } from './components/project/project-details/employee/dialog-employee/dialog-employee.component';
+import { MaterialComponent } from './components/project/project-details/material/material.component';
+import { DialogMaterialComponent } from './components/project/project-details/material/dialog-material/dialog-material.component';
+import { DashboardComponent } from './components/project/project-details/dashboard/dashboard.component';
+import { ChartsComponent } from './components/project/project-details/dashboard/charts/charts.component';
+import { CardsComponent } from './components/project/project-details/dashboard/cards/cards.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -63,26 +63,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 ]);
 @NgModule({
   declarations: [
-    AppComponent, 
-    NavbarComponent, 
-    LoginComponent, 
-    HomeComponent, 
-    ProjectComponent, 
-    DialogComponent, 
-    DialogprojectComponent, 
-    DialogNewTeamComponent, 
-    ProjectDetailsComponent, 
-    TeamsEmpComponent, 
-    MaterialsComponent, 
-    DialogMaterialComponent, 
-    DialogTeamEmpComponent, 
-    CardsComponent, 
-    ChartsComponent, 
-    TachesComponent, 
-    DialogTacheComponent, 
-    DialogEmailComponent, 
-    SidebarComponent, 
-    DepartmentDetailsComponent
+    AppComponent, NavbarComponent, LoginComponent, HomeComponent, DialogComponent, ProjectComponent, DialogProjectComponent, ProjectDetailsComponent, TacheComponent, DialogTacheComponent, EmployeeComponent, DialogEmployeeComponent, MaterialComponent, DialogMaterialComponent, DashboardComponent, ChartsComponent, CardsComponent
+
 ],
   imports: [
     BrowserModule,
@@ -117,6 +99,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   ],
   providers: [
     AuthGuard,
+    CookieService,
   ],
   bootstrap: [AppComponent],
 })

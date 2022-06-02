@@ -1,12 +1,14 @@
 export interface IProjects{
-  id:number,
-  name:string,
-  date_debut: Date,
-  date_fin: Date,
-  description:string,
-  created_at: Date,
-  modify_at: Date,
-  isActive: boolean,
-  department_id: number,
-  team_id: number,
-}
+    id:number,
+    title:string,
+    start_date: Date,
+    end_date: Date,
+    description:string,
+    created_at: Date,
+    modify_at: Date,
+    status: boolean,
+    department_id: number,
+    user_id: number,
+    reason: string,
+  }
+  

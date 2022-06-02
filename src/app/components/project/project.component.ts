@@ -5,13 +5,12 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { IProjects } from './IProjects';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogprojectComponent } from './dialogproject/dialogproject.component';
+import { DialogProjectComponent } from './dialog-project/dialog-project.component';
 
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
@@ -22,7 +21,7 @@ export class ProjectComponent implements OnInit {
   public projects: any[] =[];
   public id: number;
 
-  displayedColumns: string[] = ['title', 'start', 'endd','created_at', 'isActive', 'actions'];
+  displayedColumns: string[] = ['title', 'start_date', 'end_date','created_at', 'status', 'actions'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -51,15 +50,11 @@ export class ProjectComponent implements OnInit {
     this.service.getProjects().subscribe(projects=>{
       this.projects=projects;
     });
-
-    this.service.changeActivityProject().subscribe(res => {
-      console.log('Success');
-    })
   }
 
 
   openDialog() {
-    this.dialog.open(DialogprojectComponent, {
+    this.dialog.open(DialogProjectComponent, {
       width:"40%" ,
     })
   }
@@ -81,7 +76,7 @@ export class ProjectComponent implements OnInit {
   }
 
   editProject(row : any){
-    this.dialog.open(DialogprojectComponent, {
+    this.dialog.open(DialogProjectComponent, {
       width:'30%',
       data:row
     }).afterClosed().subscribe(val => {
@@ -121,4 +116,5 @@ export class ProjectComponent implements OnInit {
   private redirect(): void {
     // this.router.navigate([`/department/${this.id}/project/${row.id}`]);
   }
+
 }

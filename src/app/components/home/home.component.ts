@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { baseURL } from 'src/environments/environment';
-import { Emitters } from '../../emitters/emitters';
 import { IDepartments } from './IDepartments';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
+import {CookieService} from 'ngx-cookie-service';
 
 
 @Component({
@@ -21,7 +21,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private depService: AuthService,
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    private cookies: CookieService,
   ) { }
 
 
@@ -30,7 +31,13 @@ export class HomeComponent implements OnInit {
       this.deps=deps;
     });
     this.changeActivity();
-
+    // let token = localStorage.getItem('jwt');
+    let token = this.cookies.get('token');
+    console.log("token",token);
+    
+    // this.depService.userInfo().subscribe(res => {
+    //   console.log('res',res)
+    // })
   }
 
   openDialog() {
@@ -45,11 +52,12 @@ export class HomeComponent implements OnInit {
   }
 
   changeActivity(){
-    this.depService.changeActivityProject()
-    .subscribe(res=>{
-      console.log("jjjjjj");
+  //   this.depService.changeActivityProject()
+  //   .subscribe(res=>{
+  //     console.log("jjjjjj");
       
-    }
-  )}
+  //   }
+  // )
+  }
 
 }
