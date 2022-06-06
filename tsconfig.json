@@ -28,5 +28,6 @@
     "strictPropertyInitialization": false,
     "noImplicitAny": false,
     "strictNullChecks": false,
+    "noImplicitThis": false,
   }
 }

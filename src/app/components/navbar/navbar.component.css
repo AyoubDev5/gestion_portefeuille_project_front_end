@@ -1,3 +1,9 @@
-.logout{
-	
+div.nav-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+mat-icon{
+	color: white;
+	font-size: 27px;
 }

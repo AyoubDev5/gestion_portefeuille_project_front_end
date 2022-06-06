@@ -1,1 +1,32 @@
-<p>dialog-employee works!</p>
+<h1 mat-dialog-title>Add Employee</h1>
+
+<div mat-dialog-content>
+    <form [formGroup]="emplForm">
+        <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="" formControlName="nom">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="" formControlName="prenom">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Speciality</mat-label>
+        <input matInput placeholder="" formControlName="specialite">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>e-mail</mat-label>
+        <input matInput placeholder="" formControlName="email">
+    </mat-form-field>
+
+    </form>
+</div>
+
+    <div mat-dialog-actions [align]="'end'">
+        <button mat-raised-button color="warn" mat-dialog-close>
+            close
+        </button>
+        <button style="margin-left: 10px; " mat-raised-button color="primary" (click)="addEmpl()">
+            {{actionBtn }}
+        </button>
+    </div>

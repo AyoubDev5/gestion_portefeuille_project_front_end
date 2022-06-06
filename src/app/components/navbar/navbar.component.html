@@ -10,10 +10,27 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li> -->
       </ul>
-      <div class="d-flex">
-        <!-- <input class="div-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
-        <button class="btn btn-outline-primary" (click)="logout()" type="submit">Logout</button>
-      </div>
-    </div>
+  <div class="nav-menu" *ngFor="let user of userInfo">
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon> person_pin</mat-icon>
+      <span>{{user.name}}</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>drafts</mat-icon>
+      <span>{{user.email}}</span>
+    </button>
+
+    <button (click)="logout()" type="submit" mat-menu-item>
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+  </div>
+  </div>
   </div>
 </nav>

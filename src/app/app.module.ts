@@ -56,6 +56,14 @@ import { DialogMaterialComponent } from './components/project/project-details/ma
 import { DashboardComponent } from './components/project/project-details/dashboard/dashboard.component';
 import { ChartsComponent } from './components/project/project-details/dashboard/charts/charts.component';
 import { CardsComponent } from './components/project/project-details/dashboard/cards/cards.component';
+import { SidebarComponent } from './components/project/project-details/dashboard/sidebar/sidebar.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { SendSmsComponent } from './components/project/project-details/employee/send-sms/send-sms.component';
+import { MainComponent } from './components/project/project-details/dashboard/main/main.component';
+import { HeaderComponent } from './components/project/project-details/dashboard/header/header.component';
+import { DashHomeComponent } from './components/project/project-details/dashboard/dash-home/dash-home.component';
+// import $ from "jquery";
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -63,8 +71,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 ]);
 @NgModule({
   declarations: [
-    AppComponent, NavbarComponent, LoginComponent, HomeComponent, DialogComponent, ProjectComponent, DialogProjectComponent, ProjectDetailsComponent, TacheComponent, DialogTacheComponent, EmployeeComponent, DialogEmployeeComponent, MaterialComponent, DialogMaterialComponent, DashboardComponent, ChartsComponent, CardsComponent
-
+    AppComponent, NavbarComponent, LoginComponent, HomeComponent, DialogComponent, ProjectComponent, DialogProjectComponent, ProjectDetailsComponent, TacheComponent, DialogTacheComponent, EmployeeComponent, DialogEmployeeComponent, MaterialComponent, DialogMaterialComponent, DashboardComponent, ChartsComponent, CardsComponent, SidebarComponent, SendSmsComponent, MainComponent, HeaderComponent, DashHomeComponent
 ],
   imports: [
     BrowserModule,
@@ -95,7 +102,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatMenuModule,
     LayoutModule,
     FullCalendarModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [
     AuthGuard,

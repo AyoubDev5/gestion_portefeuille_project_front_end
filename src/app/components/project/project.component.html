@@ -4,7 +4,7 @@
   mat-raised-button 
   class="addBtn" 
   color="primary" 
-  (click)="openDialog()"
+  (click)="openDialog(row)"
 >
   ADD PROJECT
 </button>
@@ -64,10 +64,9 @@
       </button>
       <button mat-icon-button color="warn" (click)="deleteProject(row.id)">
         <mat-icon>delete</mat-icon>
-      </button>
-      
+      </button>   
       <button 
-        routerLink="/department/{{id}}/project/{{row.id}}/tache" 
+        routerLink="/department/{{id}}/project/{{row.id}}/details" 
         mat-icon-button color="secondary"
       >
       <mat-icon>visibility</mat-icon>

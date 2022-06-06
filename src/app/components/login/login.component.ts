@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   public redirectUrl: string = '/departments';
   hide = true;
   form: FormGroup;
+  response;
 
   constructor(
     private http: HttpClient,
@@ -35,10 +36,12 @@ export class LoginComponent implements OnInit {
 
   LoginHundler() {
     if (this.form.valid) {
-      this.authService.login(this.form.value).subscribe((res) => {
-        if (res.success) {
-          this.cookies.set('token', res.jwt);
-          localStorage.setItem('jwt', res.jwt);
+      this.http.post('http://localhost:8000/api/login',this.form.value,{
+        withCredentials:true
+      }).subscribe((res) => {
+        this.response=res;
+        if (this.response.success) {
+          localStorage.setItem('jwt', this.response.jwt);
           this.redirect();
         } else {
           alert('Incorrect Credentials');

@@ -20,7 +20,7 @@ export class ProjectComponent implements OnInit {
 
   public projects: any[] =[];
   public id: number;
-
+  row;
   displayedColumns: string[] = ['title', 'start_date', 'end_date','created_at', 'status', 'actions'];
   dataSource!: MatTableDataSource<any>;
 
@@ -47,15 +47,20 @@ export class ProjectComponent implements OnInit {
       this.GetAllProjects(this.id);
     })
 
-    this.service.getProjects().subscribe(projects=>{
-      this.projects=projects;
-    });
+    // this.service.getProjects().subscribe(projects=>{
+    //   this.projects=projects;
+    // });
   }
 
 
-  openDialog() {
+  openDialog(row : any) {
     this.dialog.open(DialogProjectComponent, {
       width:"40%" ,
+      data:row
+    }).afterClosed().subscribe(val => {
+      if(val === 'save'){
+        this.GetAllProjects(this.id);
+      }
     })
   }
 
@@ -103,7 +108,6 @@ export class ProjectComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }

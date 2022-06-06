@@ -1,1 +1,38 @@
-<p>charts works!</p>
+<div class="row">
+<div class="col-xl-6 col-lg-12">
+    <div class="card mb-4 shadow-sm">
+      <article class="card-body">
+        <h4 class="card-title">Details Employees</h4>
+        <div>
+            <canvas id="bar">{{chartBar}}</canvas>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="col-xl-6 col-lg-12">
+    <div class="card mb-4 shadow-sm">
+      <article class="card-body">
+        <h4 class="card-title">Details Materials</h4>
+        <div>
+            <canvas id="line">
+              {{chartLine}}
+            </canvas>
+          </div>
+      </article>
+    </div>
+  </div>
+  
+  <div class="col-xl-6 col-lg-12">
+    <div class="card mb-4 shadow-sm">
+      <article class="card-body">
+        <h4 class="card-title"> Details Taches Completed in {{nomProject}}</h4>
+        <div>
+            <canvas id="doughnut">{{chartDounat}}</canvas>
+        </div>
+      </article>
+    </div>
+  </div>
+
+
+</div>

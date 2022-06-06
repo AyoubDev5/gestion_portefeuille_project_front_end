@@ -31,7 +31,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Status</mat-label>
             <mat-select [(value)]="selectedStatus" formControlName="status">
-                <mat-option *ngFor="let option of options" [value]="option.id">
+                <mat-option *ngFor="let option of options" [value]="option.title">
                     {{option.title}}
                 </mat-option>
             </mat-select>

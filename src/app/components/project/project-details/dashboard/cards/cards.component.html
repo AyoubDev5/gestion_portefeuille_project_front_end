@@ -1,1 +1,47 @@
-<p>cards works!</p>
+<section class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="stat-card">
+                    <div class="stat-card__content">
+                        <p class="text-uppercase mb-1 text-muted">Tache</p>
+                        <h2>{{countTache || 0}}</h2>
+                    </div>
+                    <div class="stat-card_icon stat-card_icon--primary">
+                        <div class="stat-card__icon-circle image">
+                            <img src="../../../../assets/images/liste-de-taches.png" alt="tache">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="stat-card">
+                    <div class="stat-card__content">
+                        <p class="text-uppercase mb-1 text-muted">Employees</p>
+                        <h2>{{countEmp || 0}}</h2>
+                    </div>
+                    <div class="stat-card_icon stat-card_icon--primary">
+                      <div class="stat-card__icon-circle">
+                        <i class="fa fa-users"></i>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="stat-card">
+                    <div class="stat-card__content" >
+                        <p class="text-uppercase mb-1 text-muted">Materials</p>
+                        <h2>{{ getTotal() || 0}}</h2>
+                    </div>
+                    <div class="stat-card_icon stat-card_icon--primary">
+                      <div class="stat-card__icon-circle image">
+                        <img src="../../../../assets/images/grue.png" alt="grue">
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

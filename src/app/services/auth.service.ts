@@ -4,7 +4,17 @@ import { Observable } from 'rxjs';
 import { baseURL } from 'src/environments/environment';
 import { IDepartments } from '../components/home/IDepartments';
 import { IProjects } from '../components/project/IProjects';
-
+import { ITaches } from '../components/project/project-details/tache/ITaches';
+import { IMaterials } from '../components/project/project-details/material/IMaterials';
+import { IEmployees } from '../components/project/project-details/employee/IEmployees';
+ interface IEmployee{
+  id:number,
+  nom:string,
+  prenom:string,
+  specialite:string,
+  email:string,
+  s:number,
+}
 
 @Injectable({
   providedIn: 'root'
@@ -63,68 +73,70 @@ export class AuthService {
 //   postNewTeam(data): Observable<any> {
 //     return this.http.post(`${baseURL}/api/teams`, data);
 //   }
-//   //employee and teamID
-//   getTeamByProjetId(id_pro): Observable<ITeams[]>{
-//     return this.http.get<ITeams[]>(`${baseURL}/api/projet/${id_pro}/team`);
-//   }
-//   getEmployByTeamId_TeamByProjId(id_pro,id_team): Observable<IEmployees[]>{
-//     return this.http.get<IEmployees[]>(`${baseURL}/api/projet/${id_pro}/team/${id_team}/Allemploy`);
-//   }
-//   // empl
-//   postEmployByTeamId(data): Observable<any> {
-//     return this.http.post(`${baseURL}/api/employees`, data);
-//   }
-//   updateEmp(data:any, id:number){
-//     return this.http.put<any>(`${baseURL}/api/employee/${id}`, data)
-//   }
-//   deleteEmpl(id:number){
-//     return this.http.delete<any>(`${baseURL}/api/employee/${id}`)
-//   }
+  //employee and teamID
+  // getTeamByProjetId(id_pro): Observable<>{
+  // }
+  getEmployByTeamId_TeamByProjId(id_pro): Observable<IEmployees[]>{
+    return this.http.get<IEmployees[]>(`${baseURL}/api/employees`);
+  }
+  // empl
+  postEmployByTeamId(data): Observable<any> {
+    return this.http.post(`${baseURL}/api/employees`, data);
+  }
+  updateEmp(data:any, id:number){
+    return this.http.put<any>(`${baseURL}/api/employee/${id}`, data)
+  }
+  deleteEmpl(id:number){
+    return this.http.delete<any>(`${baseURL}/api/employee/${id}`)
+  }
 
-//   //materials crud:
-//   getMaterialByProjId(id): Observable<IMaterials[]>{
-//     return this.http.get<IMaterials[]>(`${baseURL}/api/projet/${id}/Allmateriel`)
-//   }
-//   postNewMaterial(data): Observable<any> {
-//     return this.http.post(`${baseURL}/api/materials`, data);
-//   }
-//   updateMaterial(data:any, id:number){
-//     return this.http.put<any>(`${baseURL}/api/material/${id}`, data)
-//   }
-//   deleteMaterial(id:number){
-//     return this.http.delete<any>(`${baseURL}/api/material/${id}`)
-//   }
+  //materials crud:
+  getMaterialByProjId(id): Observable<IMaterials[]>{
+    return this.http.get<IMaterials[]>(`${baseURL}/api/projet/${id}/Allmateriel`)
+  }
+  postNewMaterial(data): Observable<any> {
+    return this.http.post(`${baseURL}/api/materials`, data);
+  }
+  updateMaterial(data:any, id:number){
+    return this.http.put<any>(`${baseURL}/api/material/${id}`, data)
+  }
+  deleteMaterial(id:number){
+    return this.http.delete<any>(`${baseURL}/api/material/${id}`)
+  }
 
-//   //tache crud:
-//   getTacheByIdEmp(idpro,idteam,idemp): Observable<ITaches[]>{
-//     return this.http.get<ITaches[]>(`${baseURL}/api/projet/${idpro}/team/${idteam}/employ/${idemp}/tache`)
-//   }
-//   postTacheByEmplId(data):Observable<any>{
-//     return this.http.post(`${baseURL}/api/taches`, data);
-//   }
-//   updateTacheById(data:any,id:number){
-//     return this.http.put<any>(`${baseURL}/api/tache/${id}`, data);
-//   }
+  //tache crud:
+  getTacheByIdProjet(idpro): Observable<ITaches[]>{
+    return this.http.get<ITaches[]>(`${baseURL}/api/projet/${idpro}/taches`)
+  }
+  deleteTache(id:number){
+    return this.http.delete<any>(`${baseURL}/api/tache/${id}`)
+  }
+  postTacheByProjectId(data):Observable<any>{
+    return this.http.post(`${baseURL}/api/taches`, data);
+  }
+  updateTacheById(data:any,id:number){
+    return this.http.put<any>(`${baseURL}/api/tache/${id}`, data);
+  }
 
 //   //sum materiel
 //   getSumMat(id): Observable<IMaterials[]>{
 //     return this.http.get<IMaterials[]>(`${baseURL}/api/projet/${id}/materialCount`)
 //   }
 
-//   //count employee
-//   getCountEmp(id): Observable<IEmployees[]>{
-//     return this.http.get<IEmployees[]>(`${baseURL}/api/projet/${id}/employCount`);
-//   }
+  //count employee
+  getCountEmp(id): Observable<IEmployees[]>{
+    return this.http.get<IEmployees[]>(`${baseURL}/api/projet/${id}/employCount`);
+  }
 
-//   //count tache
-//   getCountTache(id): Observable<ITaches[]>{
-//     return this.http.get<ITaches[]>(`${baseURL}/api/projet/${id}/tacheCount`);
-//   }
+  //count tache
+  getCountTache(id): Observable<ITaches[]>{
+    return this.http.get<ITaches[]>(`${baseURL}/api/projet/${id}/tacheCount`);
+  }
 
-//   //send e-mail:
-//   sendEmail(data):Observable<any>{
-//     return this.http.post("https://node-server-construction.herokuapp.com/email", data);
-//   }
+  //send e-mail:
+  sendEmail(data):Observable<any>{
+    return this.http.post("https://node-server-construction.herokuapp.com/email", data);
+  }
 
 //   //get tache active
 //   getTacheActive(id): Observable<ITaches[]>{
@@ -136,6 +148,22 @@ export class AuthService {
 //   }
 
   //change activities
+
+  getEmployeeTaches(id):Observable<IEmployee[]>{
+    return this.http.get<IEmployee[]>(`${baseURL}/api/projet/${id}/countEmpWithTache`);
+  }
+
+  getTacheStatusProject(id):Observable<ITaches[]>{
+    return this.http.get<ITaches[]>(`${baseURL}/api/projet/${id}/countTacheStatus`);
+  }
+
+  getTacheStatusProjectNew(id):Observable<ITaches[]>{
+    return this.http.get<ITaches[]>(`${baseURL}/api/projet/${id}/countTacheStatusNew`);
+  }
+
+  getTacheStatusProjectNewOther(id):Observable<ITaches[]>{
+    return this.http.get<ITaches[]>(`${baseURL}/api/projet/${id}/countTacheStatusNew1`);
+  }
 
 
 }

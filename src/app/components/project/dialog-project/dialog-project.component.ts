@@ -4,10 +4,10 @@ import { AuthService } from 'src/app/services/auth.service';
 import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import {MatTableDataSource} from '@angular/material/table';
 
 import { DatePipe } from '@angular/common';
-import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-dialog-project',
@@ -22,6 +22,11 @@ export class DialogProjectComponent implements OnInit {
   startDate: any;
   endDate: any;
   public id_dep: any;
+  dataSource!: MatTableDataSource<any>;
+  isRateLimitReached = false;
+  isLoadingResults = true;
+
+  // public redirectUrl: string = `/department/${this.id_dep}/projects`;
 
   pipe = new DatePipe('en-US');
 //Select handle
@@ -32,7 +37,7 @@ export class DialogProjectComponent implements OnInit {
     },
     {
       id: false,
-      title: 'Incomplete',
+      title: 'In Complete',
     },
   ];
   selectedStatus: any;
@@ -48,8 +53,6 @@ export class DialogProjectComponent implements OnInit {
     },
   ];
   selectedReason: any;
-  dataSource!: MatTableDataSource<any>;
-
 
   constructor(
     private formBuilder : FormBuilder, 
@@ -58,6 +61,7 @@ export class DialogProjectComponent implements OnInit {
     private dialogRef : MatDialogRef<DialogProjectComponent>,
     private dialog:MatDialog,
     private route: ActivatedRoute,
+    private router: Router, 
   ) {  
 
   }
@@ -70,6 +74,7 @@ export class DialogProjectComponent implements OnInit {
       end_date: ['', Validators.required],
       description: ['', Validators.required],
       department : [this.id_dep, Validators.required],
+      status : ['', Validators.required],
       reason : ['', Validators.required],
       user : ['1', Validators.required],
     });
@@ -80,6 +85,7 @@ export class DialogProjectComponent implements OnInit {
       this.projectForm.controls['start_date'].setValue(this.editData.start_date);
       this.projectForm.controls['end_date'].setValue(this.editData.end_date);
       this.projectForm.controls['description'].setValue(this.editData.description);
+      this.projectForm.controls['status'].setValue(this.editData.status);
       this.projectForm.controls['reason'].setValue(this.editData.reason);
     }
   }
@@ -92,17 +98,10 @@ export class DialogProjectComponent implements OnInit {
           next:(res)=>{
             alert('project added successfuly');
             this.projectForm.reset();
-            this.dialogRef.close('save');
-            // this.service.getProjectsByDepId(this.id_dep)
-            // .subscribe({
-            //   next:(res)=>{
-            //     console.log("GetAllProjects",res);
-            //     this.dataSource = new MatTableDataSource(res);
-            //   },
-            //   error:(err)=>{console.log('err', err);
-            //   }
-            // });            
-            window.location.reload();
+            this.dialogRef.close('save');        
+            //window.location.reload();
+            // this.redirect();
+            this.GetAllProjects(this.id_dep);
           },
           error:(err)=>{
             console.log('err', err)
@@ -116,7 +115,23 @@ export class DialogProjectComponent implements OnInit {
       )
   }
 
+  GetAllProjects(id) {
+    this.service.getProjectsByDepId(id)
+    .subscribe({
+      next:(res)=>{
+        console.log('reslibga',res);
+        this.isLoadingResults = false;
+        this.isRateLimitReached = res === null;
+        this.dataSource = new MatTableDataSource(res);
+      },
+      error:(err)=>{console.log('err', err);
+      }
+    });
+  }
 
+  // private redirect(): void {
+  //   this.router.navigate([`/department/${this.id_dep}/projects`]);
+  // }
   updateProduct(selectedReason){
     this.service.updateProject(this.projectForm.value, this.editData.id)
     .subscribe({

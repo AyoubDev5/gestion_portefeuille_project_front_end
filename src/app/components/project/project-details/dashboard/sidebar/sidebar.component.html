@@ -1,0 +1,45 @@
+<div>
+    <aside class="navbar-aside" id="offcanvas_aside">
+      <div class="aside-top">
+        <a routerLink="/department/{{id_dep}}/project/{{id_pro}}/details" class="brand-wrap">
+          <h2>DASHBOARD</h2>
+        </a>
+        <div>
+          <button class="btn btn-icon btn-aside-minimize">
+            <i class="text-muted fas fa-stream"></i>
+          </button>
+        </div>
+      </div>
+  
+      <nav>
+        <ul class="menu-aside">
+          <li class="menu-item">
+            <a activeclass="active" class="menu-link" routerLink="/department/{{id_dep}}/projects">
+              <i class="icon fa fa-arrow-circle-left" aria-hidden="true"></i>
+              <span class="text">Projects</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a activeclass="active" class="menu-link" routerLink="/department/{{id_dep}}/project/{{id_pro}}/taches">
+              <i class="icon fas fa-list"></i>
+              <span class="text">Taches</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a activeclass="active" class="menu-link" routerLink="/department/{{id_dep}}/project/{{id_pro}}/materials">
+              <i class="icon fas fa-bags-shopping"></i>
+              <span class="text">Materials</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a activeclass="active" class="menu-link" routerLink="/department/{{id_dep}}/project/{{id_pro}}/employees">
+              <i class="icon fas fa-user"></i>
+              <span class="text">Employees</span>
+            </a>
+          </li>
+        </ul>
+        <br />
+        <br />
+      </nav>
+    </aside>
+  </div>

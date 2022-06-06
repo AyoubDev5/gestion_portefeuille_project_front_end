@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-project-details',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./project-details.component.css']
 })
 export class ProjectDetailsComponent implements OnInit {
+  id; 
+  constructor(
+    private route: ActivatedRoute,
 
-  constructor() { }
+  ) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.id = params['id'];
+      //console.log("params",this.id);
+      let idd = String(this.id);
+      localStorage.setItem("idpro", idd)
+    })
   }
 
 }
