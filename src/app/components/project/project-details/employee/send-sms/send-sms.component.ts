@@ -39,11 +39,11 @@ export class SendSmsComponent implements OnInit {
   newMessage(){
     // if(){
       if(this.emailForm.valid || this.emailData){
-        console.log(this.emailForm.value);  
+        //console.log(this.emailForm.value);  
         this.service.sendEmail(this.emailForm.value)
         .subscribe({
           next:(res)=>{
-          console.log(this.emailForm.value);      
+          //console.log(this.emailForm.value);      
         },
         error:(err)=>{
           console.log('err', err)

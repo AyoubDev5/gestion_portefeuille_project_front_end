@@ -47,7 +47,7 @@ export class DialogTacheComponent implements OnInit {
 
   ngOnInit(): void {
     this.idproject = localStorage.getItem('idpro');
-    console.log("idproject",this.idproject);
+    //console.log("idproject",this.idproject);
     this.formTache = this.formBuilder.group({
       name : ['', Validators.required],
       end_date : ['', Validators.required],
@@ -55,8 +55,8 @@ export class DialogTacheComponent implements OnInit {
       employee:[this.selectedEmp, Validators.required],
       project:[this.idproject, Validators.required],
     });
-    console.log('empp',this.selectedEmp)
-    console.log("this.formTache",this.formTache.value);
+    //console.log('empp',this.selectedEmp)
+    //console.log("this.formTache",this.formTache.value);
     if(this.editData){
       this.actionBtn = "Update";
       this.actionTitle = "Update"
@@ -70,7 +70,7 @@ export class DialogTacheComponent implements OnInit {
     this.service.getEmployByTeamId_TeamByProjId(this.idproject)
     .subscribe(res => {
       this.AllProject = res;
-      console.log('all',this.AllProject)
+      //console.log('all',this.AllProject)
     })
   }
 
@@ -80,7 +80,7 @@ export class DialogTacheComponent implements OnInit {
         this.service.postTacheByProjectId(this.formTache.value)
         .subscribe({
           next:(res)=>{
-            console.log(this.formTache.value);
+            //console.log(this.formTache.value);
             alert('Tache added successfuly');
             this.formTache.reset();
             this.dialogRef.close('save');

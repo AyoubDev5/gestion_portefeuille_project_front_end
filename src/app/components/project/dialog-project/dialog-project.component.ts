@@ -78,7 +78,7 @@ export class DialogProjectComponent implements OnInit {
       reason : ['', Validators.required],
       user : ['1', Validators.required],
     });
-    console.log("editData", this.editData);
+    //console.log("editData", this.editData);
     if(this.editData){
       this.actionBtn = "Update";
       this.projectForm.controls['title'].setValue(this.editData.title);
@@ -119,7 +119,7 @@ export class DialogProjectComponent implements OnInit {
     this.service.getProjectsByDepId(id)
     .subscribe({
       next:(res)=>{
-        console.log('reslibga',res);
+        //console.log('reslibga',res);
         this.isLoadingResults = false;
         this.isRateLimitReached = res === null;
         this.dataSource = new MatTableDataSource(res);

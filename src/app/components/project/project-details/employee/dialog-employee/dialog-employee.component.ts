@@ -11,7 +11,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class DialogEmployeeComponent implements OnInit {
 
   emplForm:FormGroup
-  actionBtn : string = "Save";
+  actionBtn : string = "Save";  
+  actionTitle : string = "New";
   public idt:any;
   constructor(
     private formBuilder : FormBuilder,
@@ -32,6 +33,7 @@ export class DialogEmployeeComponent implements OnInit {
     //console.log("editData", this.editData);
     if(this.editData){
       this.actionBtn = "Update";
+      this.actionTitle = "Update";
       this.emplForm.controls['nom'].setValue(this.editData.nom);
       this.emplForm.controls['prenom'].setValue(this.editData.prenom);
       this.emplForm.controls['specialite'].setValue(this.editData.specialite);

@@ -44,10 +44,10 @@ export class AuthService {
     return this.http.get<IProjects[]>(`${baseURL}/api/depart/${id}/Allproject`)
   }
 
-//     //project calendar
-    // getProjectsByDepIdCalendar(id): Observable<IProjects[]>{
-    //   return this.http.get<IProjects[]>(`${baseURL}/api/depart/${id}/allProCalendar`)
-    // }
+    //project calendar
+    getProjectsByDepIdCalendar(id): Observable<IProjects[]>{
+      return this.http.get<IProjects[]>(`${baseURL}/api/depart/${id}/allProCalendar`)
+    }
   getProjects(): Observable<IProjects[]>{
     return this.http.get<IProjects[]>(`${baseURL}/api/projects`)
   }

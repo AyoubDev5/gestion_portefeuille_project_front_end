@@ -12,6 +12,7 @@ export class DialogMaterialComponent implements OnInit {
 
   formMaterial: FormGroup;
   actionBtn : string = "Save";
+  actionTitle : string = "New";
   public idp: any;
 
   constructor(    
@@ -31,6 +32,7 @@ export class DialogMaterialComponent implements OnInit {
     });
     //console.log("editData", this.editData);
     if(this.editData){
+      this.actionTitle = "Update"
       this.actionBtn = "Update";
       this.formMaterial.controls['name'].setValue(this.editData.name);
       this.formMaterial.controls['prix'].setValue(this.editData.prix);

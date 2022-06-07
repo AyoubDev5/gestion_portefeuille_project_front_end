@@ -68,7 +68,7 @@ export class ProjectComponent implements OnInit {
     this.service.getProjectsByDepId(id)
     .subscribe({
       next:(res)=>{
-        console.log(res);
+        //console.log(res);
         this.isLoadingResults = false;
         this.isRateLimitReached = res === null;
         this.dataSource = new MatTableDataSource(res);

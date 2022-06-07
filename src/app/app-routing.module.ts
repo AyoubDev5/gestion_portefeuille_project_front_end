@@ -8,7 +8,7 @@ import { TacheComponent } from './components/project/project-details/tache/tache
 import { MaterialComponent } from './components/project/project-details/material/material.component'
 import { ProjectDetailsComponent } from './components/project/project-details/project-details.component';
 import { EmployeeComponent } from './components/project/project-details/employee/employee.component';
-
+import {DepartmentDetailsComponent} from './components/home/department-details/department-details.component'
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'departments', component: HomeComponent, canActivate: [AuthGuard] },
@@ -17,11 +17,7 @@ const routes: Routes = [
   { path: 'department/:id/project/:id/employees', component: EmployeeComponent, canActivate: [AuthGuard] },
   { path: 'department/:id/project/:id/materials', component: MaterialComponent, canActivate: [AuthGuard] },
   { path: 'department/:id/project/:id/details', component: ProjectDetailsComponent, canActivate: [AuthGuard] },
-
-  // { path: 'project/:id/team/:id/employee/:id/tache', component: TachesComponent, canActivate: [AuthGuard] },
-  // { path: 'department/:id/project/:id/details/employees', component: TeamsEmpComponent, canActivate: [AuthGuard] },
-  // { path: 'department/:id/project/:id/details/materials', component: MaterialsComponent, canActivate: [AuthGuard] },
-  // { path: 'department/:id/details', component: DepartmentDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'department/:id/details', component: DepartmentDetailsComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

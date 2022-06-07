@@ -47,6 +47,10 @@ export class EmployeeComponent implements OnInit {
   openDialogEmpl() {
     this.dialog.open(DialogEmployeeComponent, {
       width:"40%" ,
+    }).afterClosed().subscribe(val => {
+      if(val === 'save'){
+        this.GetAllEmpls(this.idprojet);
+      }
     })
   }
 
@@ -61,7 +65,7 @@ export class EmployeeComponent implements OnInit {
     this.service.getEmployByTeamId_TeamByProjId(idp)
     .subscribe({
       next:(res)=>{
-        console.log(res);
+        //console.log(res);
         this.isLoadingResults = false;
         this.isRateLimitReached = res === null;
         this.dataSource = new MatTableDataSource(res);

@@ -131,7 +131,7 @@ export class ChartsComponent implements OnInit {
                     this.count=resp.map((data)=>data.s)
                     this.employNom=resp.map((data)=>data.nom)
                     this.employPrenom=resp.map((data)=>data.prenom)
-                    console.log(this.employNom);
+                    //console.log(this.employNom);
 
                     this.chartLine= new Chart("bar", {
                       type: 'bar',

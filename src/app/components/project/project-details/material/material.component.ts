@@ -50,6 +50,10 @@ export class MaterialComponent implements OnInit {
   openDialog(){
     this.dialog.open(DialogMaterialComponent, {
       width:"40%" ,
+    }).afterClosed().subscribe(val => {
+      if(val === 'save'){
+        this.getMaterials(this.idprojet);
+      }
     })
   }
 

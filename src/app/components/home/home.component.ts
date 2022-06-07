@@ -14,11 +14,10 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
 
+export class HomeComponent implements OnInit {
   public deps: any;
   public userInfo: any[] =[];
-
 
   constructor(
     private http: HttpClient,
@@ -27,7 +26,6 @@ export class HomeComponent implements OnInit {
     private cookies: CookieService,
     private router: Router, 
   ) { }
-
 
   ngOnInit(): void {
     //fetch user to get Id Dep
@@ -54,25 +52,10 @@ export class HomeComponent implements OnInit {
     })
     this.changeActivity();
   }
-
   openDialog() {
     this.dialog.open(DialogComponent, {
       width:"40%" ,
     })
-    // .afterClosed().subscribe(val=>{
-    //   if(val){
-    //     this.depService.getDep();
-    //   }
-    // });
   }
-
-  changeActivity(){
-  //   this.depService.changeActivityProject()
-  //   .subscribe(res=>{
-  //     console.log("jjjjjj");
-      
-  //   }
-  // )
-  }
-
+  changeActivity(){}
 }

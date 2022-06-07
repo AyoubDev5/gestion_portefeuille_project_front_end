@@ -63,6 +63,7 @@ import { SendSmsComponent } from './components/project/project-details/employee/
 import { MainComponent } from './components/project/project-details/dashboard/main/main.component';
 import { HeaderComponent } from './components/project/project-details/dashboard/header/header.component';
 import { DashHomeComponent } from './components/project/project-details/dashboard/dash-home/dash-home.component';
+import { DepartmentDetailsComponent } from './components/home/department-details/department-details.component';
 // import $ from "jquery";
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -71,7 +72,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 ]);
 @NgModule({
   declarations: [
-    AppComponent, NavbarComponent, LoginComponent, HomeComponent, DialogComponent, ProjectComponent, DialogProjectComponent, ProjectDetailsComponent, TacheComponent, DialogTacheComponent, EmployeeComponent, DialogEmployeeComponent, MaterialComponent, DialogMaterialComponent, DashboardComponent, ChartsComponent, CardsComponent, SidebarComponent, SendSmsComponent, MainComponent, HeaderComponent, DashHomeComponent
+    AppComponent, NavbarComponent, LoginComponent, HomeComponent, DialogComponent, ProjectComponent, DialogProjectComponent, ProjectDetailsComponent, TacheComponent, DialogTacheComponent, EmployeeComponent, DialogEmployeeComponent, MaterialComponent, DialogMaterialComponent, DashboardComponent, ChartsComponent, CardsComponent, SidebarComponent, SendSmsComponent, MainComponent, HeaderComponent, DashHomeComponent, DepartmentDetailsComponent
 ],
   imports: [
     BrowserModule,

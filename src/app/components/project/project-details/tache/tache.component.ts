@@ -39,7 +39,7 @@ export class TacheComponent implements OnInit {
       this.idpro = params['id'];
       let idpro = String(this.idpro);
       localStorage.setItem('idpro',idpro);
-      console.log("params",this.idpro);
+      //console.log("params",this.idpro);
       this.getTaches(this.idpro);
     })
   }
@@ -48,7 +48,7 @@ export class TacheComponent implements OnInit {
     this.service.getTacheByIdProjet(idp).subscribe({
       next:(res)=>{
         this.taches = res;
-        console.log("getTaches",this.taches);
+        //console.log("getTaches",this.taches);
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
