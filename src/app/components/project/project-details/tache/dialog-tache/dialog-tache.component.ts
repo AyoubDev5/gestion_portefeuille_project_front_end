@@ -51,7 +51,7 @@ export class DialogTacheComponent implements OnInit {
     this.formTache = this.formBuilder.group({
       name : ['', Validators.required],
       end_date : ['', Validators.required],
-      status: ['', Validators.required],
+      statut: ['', Validators.required],
       employee:[this.selectedEmp, Validators.required],
       project:[this.idproject, Validators.required],
     });
@@ -64,7 +64,7 @@ export class DialogTacheComponent implements OnInit {
       this.formTache.controls['end_date'].setValue(this.editData.end_date);
       this.formTache.controls['employee'].setValue(this.editData.employee);
       this.formTache.controls['project'].setValue(this.editData.project);
-      this.formTache.controls['status'].setValue(this.editData.status);
+      this.formTache.controls['statut'].setValue(this.editData.statut);
     }
 
     this.service.getEmployByTeamId_TeamByProjId(this.idproject)

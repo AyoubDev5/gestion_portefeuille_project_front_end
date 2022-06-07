@@ -42,6 +42,7 @@ export class ChartsComponent implements OnInit {
       this.getMaterials(this.idprojet);
       this.getProjectByDepName(this.idprojet);
       this.getTachesActivate(this.idprojet);
+      this.getProjectNameById(this.idprojet);
       // this.getTacheActive(this.idprojet);
     })
   }
@@ -79,16 +80,22 @@ export class ChartsComponent implements OnInit {
       }
     });
   }
+  getProjectNameById(id){
+      this.service.getProjectById(id)
+        .subscribe({
+          next:(res)=>{
+            this.nomProject=res.map((data)=>data.title)
+            // console.log(this.nomProject);
+            localStorage.setItem('name_pro', this.nomProject);
+          }
+        })
+  }
 
   getTachesActivate(id){
     this.service.getTacheStatusProject(id)
         .subscribe({
             next:(res)=>{
-              this.nomProject=res[1];
               this.tacheProject=res
-              // console.log(this.tacheProject);
-              localStorage.setItem('name_pro', this.nomProject);
-
               this.service.getTacheStatusProjectNew(id)
                   .subscribe({
                     next:(res)=>{
@@ -121,7 +128,7 @@ export class ChartsComponent implements OnInit {
             }
         })
   }
-  
+
 
   getProjectByDepName(id){
         this.service.getEmployeeTaches(id)

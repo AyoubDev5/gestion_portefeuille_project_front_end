@@ -27,7 +27,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Status</mat-label>
-      <mat-select [(value)]="selectedStatus" formControlName="status">
+      <mat-select [(value)]="selectedStatus" formControlName="statut">
           <mat-option *ngFor="let item of options" [value]="item.title">
               {{item.title}}
           </mat-option>

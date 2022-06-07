@@ -12,6 +12,8 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.name_pro = localStorage.getItem('name_pro');
+    // console.log(this.name_pro);
+
   }
 
 }

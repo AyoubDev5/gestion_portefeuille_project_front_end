@@ -3,7 +3,7 @@ export interface ITaches{
   name:string,
   start_date:string,
   end_date:string,
-  status:boolean,
+  statut:boolean,
   project:number,
   employee:number,
 }

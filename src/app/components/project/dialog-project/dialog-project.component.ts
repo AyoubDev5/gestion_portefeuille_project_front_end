@@ -19,6 +19,8 @@ export class DialogProjectComponent implements OnInit {
   freshList = ["title", "start_date", "end_date","created_at","modify_at","status","reason" ]
   projectForm: FormGroup;
   actionBtn : string = "Save";
+  actionTitle : string = "New";
+
   startDate: any;
   endDate: any;
   public id_dep: any;
@@ -32,12 +34,16 @@ export class DialogProjectComponent implements OnInit {
 //Select handle
   options: any[] = [
     {
-      id: true,
-      title: 'Complete',
+      id: 1,
+      title: 'In Progress',
     },
     {
-      id: false,
-      title: 'In Complete',
+      id: 2,
+      title: 'Completed',
+    },
+    {
+      id: 3,
+      title: 'In Completed',
     },
   ];
   selectedStatus: any;
@@ -81,6 +87,7 @@ export class DialogProjectComponent implements OnInit {
     //console.log("editData", this.editData);
     if(this.editData){
       this.actionBtn = "Update";
+      this.actionTitle = "Update";
       this.projectForm.controls['title'].setValue(this.editData.title);
       this.projectForm.controls['start_date'].setValue(this.editData.start_date);
       this.projectForm.controls['end_date'].setValue(this.editData.end_date);

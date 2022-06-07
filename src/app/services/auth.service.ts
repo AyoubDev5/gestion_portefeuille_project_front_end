@@ -52,6 +52,9 @@ export class AuthService {
     return this.http.get<IProjects[]>(`${baseURL}/api/projects`)
   }
 
+  getProjectById(id):Observable<IProjects[]>{
+    return this.http.get<IProjects[]>(`${baseURL}/api/projectById/${id}`)
+  }
 
   postProject(data): Observable<any> {
     return this.http.post(`${baseURL}/api/projects`, data);

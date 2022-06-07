@@ -18,7 +18,7 @@ export class TacheComponent implements OnInit {
   public idemp: any;
   public idpro: any;
 
-  displayedColumns: string[] = ['name','start_date','end_date', 'status','actions'];
+  displayedColumns: string[] = ['name','start_date','end_date', 'statut','actions'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
